@@ -1,0 +1,8 @@
+.WRITER_ID 2
+.WRITER_INFO
+ WriterName:Kakada
+ WriterTrailNo:0
+.COUNTRY CAMBODIA
+.AGE 24
+.SEX F
+.HAND Right

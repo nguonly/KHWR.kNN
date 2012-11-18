@@ -1,0 +1,8 @@
+.WRITER_ID 1
+.WRITER_INFO
+ WriterName:lycog
+ WriterTrailNo:0
+.COUNTRY CAMBODIA
+.AGE 26
+.SEX M
+.HAND Right

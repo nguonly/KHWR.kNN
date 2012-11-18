@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KHWR.kNN.Common.InkFile">
+    <Position X="12.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\InkFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KHWR.kNN.Train.TrainRecognizer">
+    <Position X="9" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAABABAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Train\TrainRecognizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KHWR.kNN.PreProc.PreProcessing">
+    <Position X="1.5" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgAQAgAAAACAEAAACAAACAAAEABgAAAAAAAEAAgIA=</HashCode>
+      <FileName>PreProc\PreProcessing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KHWR.kNN.FeatureExtractor.PointFloatShapeFeature">
+    <Position X="4.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAABAIAEAAAAAAAAAAAAAAAAAAAAAAIAAAAAAYAA=</HashCode>
+      <FileName>FeatureExtractor\PointFloatShapeFeature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KHWR.kNN.FeatureExtractor.PointFloatShapeFeatureExtractor">
+    <Position X="6.75" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAgAAAAAAAAAAAAAAAAAAQAAAAgAA=</HashCode>
+      <FileName>FeatureExtractor\PointFloatShapeFeatureExtractor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KHWR.kNN.Train.TrainFeature">
+    <Position X="6.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Train\TrainFeature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KHWR.kNN.Test.TestRecognizer">
+    <Position X="11.75" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAACAIAAAA=</HashCode>
+      <FileName>Test\TestRecognizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9.75" />
+</ClassDiagram>

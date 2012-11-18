@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3370E157-DC46-4D10-B577-90B861A3E406}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KHWR.kNN</RootNamespace>
+    <AssemblyName>KHWR.kNN</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Ink, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Tablet PC Platform SDK\Include\Microsoft.Ink.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BoundingBox.cs" />
+    <Compile Include="Common\CaptureDevice.cs" />
+    <Compile Include="Common\Channel.cs" />
+    <Compile Include="Common\PenPoint.cs" />
+    <Compile Include="Common\Trace.cs" />
+    <Compile Include="Common\TraceGroup.cs" />
+    <Compile Include="Common\InkFile.cs" />
+    <Compile Include="Enum\ChannelTypeEnum.cs" />
+    <Compile Include="Enum\TraceGroupCornerEnum.cs" />
+    <Compile Include="FeatureExtractor\PointFloatShapeFeature.cs" />
+    <Compile Include="FeatureExtractor\PointFloatShapeFeatureExtractor.cs" />
+    <Compile Include="Helper\TraceHelper.cs" />
+    <Compile Include="PreProc\PreProcessing.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reco\NNRecognizer.cs" />
+    <Compile Include="Reco\RecoResult.cs" />
+    <Compile Include="Test\TestRecognizer.cs" />
+    <Compile Include="Train\TrainFeature.cs" />
+    <Compile Include="Train\TrainRecognizer.cs" />
+    <Compile Include="View\PreProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PreProcessForm.Designer.cs">
+      <DependentUpon>PreProcessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RecognizerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RecognizerForm.Designer.cs">
+      <DependentUpon>RecognizerForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\PreProcessForm.resx">
+      <DependentUpon>PreProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RecognizerForm.resx">
+      <DependentUpon>RecognizerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\raw\usr1\a\a-C-00.txt" />
+    <Content Include="data\raw\usr1\a\a-C-01.txt" />
+    <Content Include="data\raw\usr1\a\a-C-02.txt" />
+    <Content Include="data\raw\usr1\a\a-C-03.txt" />
+    <Content Include="data\raw\usr1\a\a-C-04.txt" />
+    <Content Include="data\raw\usr1\ba\ba-C-00.txt" />
+    <Content Include="data\raw\usr1\ba\ba-C-01.txt" />
+    <Content Include="data\raw\usr1\ba\ba-C-02.txt" />
+    <Content Include="data\raw\usr1\ba\ba-C-03.txt" />
+    <Content Include="data\raw\usr1\ba\ba-C-04.txt" />
+    <Content Include="data\raw\usr1\ca\ca-C-00.txt" />
+    <Content Include="data\raw\usr1\ca\ca-C-01.txt" />
+    <Content Include="data\raw\usr1\ca\ca-C-02.txt" />
+    <Content Include="data\raw\usr1\ca\ca-C-03.txt" />
+    <Content Include="data\raw\usr1\ca\ca-C-04.txt" />
+    <Content Include="data\raw\usr1\cha\cha-C-00.txt" />
+    <Content Include="data\raw\usr1\cha\cha-C-01.txt" />
+    <Content Include="data\raw\usr1\cha\cha-C-02.txt" />
+    <Content Include="data\raw\usr1\cha\cha-C-03.txt" />
+    <Content Include="data\raw\usr1\cha\cha-C-04.txt" />
+    <Content Include="data\raw\usr1\cho\cho-C-00.txt" />
+    <Content Include="data\raw\usr1\cho\cho-C-01.txt" />
+    <Content Include="data\raw\usr1\cho\cho-C-02.txt" />
+    <Content Include="data\raw\usr1\cho\cho-C-03.txt" />
+    <Content Include="data\raw\usr1\cho\cho-C-04.txt" />
+    <Content Include="data\raw\usr1\co\co-C-00.txt" />
+    <Content Include="data\raw\usr1\co\co-C-01.txt" />
+    <Content Include="data\raw\usr1\co\co-C-02.txt" />
+    <Content Include="data\raw\usr1\co\co-C-03.txt" />
+    <Content Include="data\raw\usr1\co\co-C-04.txt" />
+    <Content Include="data\raw\usr1\da\da-C-00.txt" />
+    <Content Include="data\raw\usr1\da\da-C-01.txt" />
+    <Content Include="data\raw\usr1\da\da-C-02.txt" />
+    <Content Include="data\raw\usr1\da\da-C-03.txt" />
+    <Content Include="data\raw\usr1\da\da-C-04.txt" />
+    <Content Include="data\raw\usr1\do\do-C-00.txt" />
+    <Content Include="data\raw\usr1\do\do-C-01.txt" />
+    <Content Include="data\raw\usr1\do\do-C-02.txt" />
+    <Content Include="data\raw\usr1\do\do-C-03.txt" />
+    <Content Include="data\raw\usr1\do\do-C-04.txt" />
+    <Content Include="data\raw\usr1\Eight\Eight-N-00.txt" />
+    <Content Include="data\raw\usr1\Eight\Eight-N-01.txt" />
+    <Content Include="data\raw\usr1\Eight\Eight-N-02.txt" />
+    <Content Include="data\raw\usr1\Eight\Eight-N-03.txt" />
+    <Content Include="data\raw\usr1\Eight\Eight-N-04.txt" />
+    <Content Include="data\raw\usr1\Five\Five-N-00.txt" />
+    <Content Include="data\raw\usr1\Five\Five-N-01.txt" />
+    <Content Include="data\raw\usr1\Five\Five-N-02.txt" />
+    <Content Include="data\raw\usr1\Five\Five-N-03.txt" />
+    <Content Include="data\raw\usr1\Five\Five-N-04.txt" />
+    <Content Include="data\raw\usr1\Four\Four-N-00.txt" />
+    <Content Include="data\raw\usr1\Four\Four-N-01.txt" />
+    <Content Include="data\raw\usr1\Four\Four-N-02.txt" />
+    <Content Include="data\raw\usr1\Four\Four-N-03.txt" />
+    <Content Include="data\raw\usr1\Four\Four-N-04.txt" />
+    <Content Include="data\raw\usr1\ha\ha-C-00.txt" />
+    <Content Include="data\raw\usr1\ha\ha-C-01.txt" />
+    <Content Include="data\raw\usr1\ha\ha-C-02.txt" />
+    <Content Include="data\raw\usr1\ha\ha-C-03.txt" />
+    <Content Include="data\raw\usr1\ha\ha-C-04.txt" />
+    <Content Include="data\raw\usr1\ka\ka-C-00.txt" />
+    <Content Include="data\raw\usr1\ka\ka-C-01.txt" />
+    <Content Include="data\raw\usr1\ka\ka-C-02.txt" />
+    <Content Include="data\raw\usr1\ka\ka-C-03.txt" />
+    <Content Include="data\raw\usr1\ka\ka-C-04.txt" />
+    <Content Include="data\raw\usr1\kha\kha-C-00.txt" />
+    <Content Include="data\raw\usr1\kha\kha-C-01.txt" />
+    <Content Include="data\raw\usr1\kha\kha-C-02.txt" />
+    <Content Include="data\raw\usr1\kha\kha-C-03.txt" />
+    <Content Include="data\raw\usr1\kha\kha-C-04.txt" />
+    <Content Include="data\raw\usr1\kho\kho-C-00.txt" />
+    <Content Include="data\raw\usr1\kho\kho-C-01.txt" />
+    <Content Include="data\raw\usr1\kho\kho-C-02.txt" />
+    <Content Include="data\raw\usr1\kho\kho-C-03.txt" />
+    <Content Include="data\raw\usr1\kho\kho-C-04.txt" />
+    <Content Include="data\raw\usr1\ko\ko-C-00.txt" />
+    <Content Include="data\raw\usr1\ko\ko-C-01.txt" />
+    <Content Include="data\raw\usr1\ko\ko-C-02.txt" />
+    <Content Include="data\raw\usr1\ko\ko-C-03.txt" />
+    <Content Include="data\raw\usr1\ko\ko-C-04.txt" />
+    <Content Include="data\raw\usr1\la\la-C-00.txt" />
+    <Content Include="data\raw\usr1\la\la-C-01.txt" />
+    <Content Include="data\raw\usr1\la\la-C-02.txt" />
+    <Content Include="data\raw\usr1\la\la-C-03.txt" />
+    <Content Include="data\raw\usr1\la\la-C-04.txt" />
+    <Content Include="data\raw\usr1\lo\lo-C-00.txt" />
+    <Content Include="data\raw\usr1\lo\lo-C-01.txt" />
+    <Content Include="data\raw\usr1\lo\lo-C-02.txt" />
+    <Content Include="data\raw\usr1\lo\lo-C-03.txt" />
+    <Content Include="data\raw\usr1\lo\lo-C-04.txt" />
+    <Content Include="data\raw\usr1\mo\mo-C-00.txt" />
+    <Content Include="data\raw\usr1\mo\mo-C-01.txt" />
+    <Content Include="data\raw\usr1\mo\mo-C-02.txt" />
+    <Content Include="data\raw\usr1\mo\mo-C-03.txt" />
+    <Content Include="data\raw\usr1\mo\mo-C-04.txt" />
+    <Content Include="data\raw\usr1\ngo\ngo-C-00.txt" />
+    <Content Include="data\raw\usr1\ngo\ngo-C-01.txt" />
+    <Content Include="data\raw\usr1\ngo\ngo-C-02.txt" />
+    <Content Include="data\raw\usr1\ngo\ngo-C-03.txt" />
+    <Content Include="data\raw\usr1\ngo\ngo-C-04.txt" />
+    <Content Include="data\raw\usr1\Nine\Nine-N-00.txt" />
+    <Content Include="data\raw\usr1\Nine\Nine-N-01.txt" />
+    <Content Include="data\raw\usr1\Nine\Nine-N-02.txt" />
+    <Content Include="data\raw\usr1\Nine\Nine-N-03.txt" />
+    <Content Include="data\raw\usr1\Nine\Nine-N-04.txt" />
+    <Content Include="data\raw\usr1\nno\nno-C-00.txt" />
+    <Content Include="data\raw\usr1\nno\nno-C-01.txt" />
+    <Content Include="data\raw\usr1\nno\nno-C-02.txt" />
+    <Content Include="data\raw\usr1\nno\nno-C-03.txt" />
+    <Content Include="data\raw\usr1\nno\nno-C-04.txt" />
+    <Content Include="data\raw\usr1\no\no-C-00.txt" />
+    <Content Include="data\raw\usr1\no\no-C-01.txt" />
+    <Content Include="data\raw\usr1\no\no-C-02.txt" />
+    <Content Include="data\raw\usr1\no\no-C-03.txt" />
+    <Content Include="data\raw\usr1\no\no-C-04.txt" />
+    <Content Include="data\raw\usr1\nyo\nyo-C-00.txt" />
+    <Content Include="data\raw\usr1\nyo\nyo-C-01.txt" />
+    <Content Include="data\raw\usr1\nyo\nyo-C-02.txt" />
+    <Content Include="data\raw\usr1\nyo\nyo-C-03.txt" />
+    <Content Include="data\raw\usr1\nyo\nyo-C-04.txt" />
+    <Content Include="data\raw\usr1\One\One-N-00.txt" />
+    <Content Include="data\raw\usr1\One\One-N-01.txt" />
+    <Content Include="data\raw\usr1\One\One-N-02.txt" />
+    <Content Include="data\raw\usr1\One\One-N-03.txt" />
+    <Content Include="data\raw\usr1\One\One-N-04.txt" />
+    <Content Include="data\raw\usr1\pha\pha-C-00.txt" />
+    <Content Include="data\raw\usr1\pha\pha-C-01.txt" />
+    <Content Include="data\raw\usr1\pha\pha-C-02.txt" />
+    <Content Include="data\raw\usr1\pha\pha-C-03.txt" />
+    <Content Include="data\raw\usr1\pha\pha-C-04.txt" />
+    <Content Include="data\raw\usr1\pho\pho-C-00.txt" />
+    <Content Include="data\raw\usr1\pho\pho-C-01.txt" />
+    <Content Include="data\raw\usr1\pho\pho-C-02.txt" />
+    <Content Include="data\raw\usr1\pho\pho-C-03.txt" />
+    <Content Include="data\raw\usr1\pho\pho-C-04.txt" />
+    <Content Include="data\raw\usr1\po\po-C-00.txt" />
+    <Content Include="data\raw\usr1\po\po-C-01.txt" />
+    <Content Include="data\raw\usr1\po\po-C-02.txt" />
+    <Content Include="data\raw\usr1\po\po-C-03.txt" />
+    <Content Include="data\raw\usr1\po\po-C-04.txt" />
+    <Content Include="data\raw\usr1\ro\ro-C-00.txt" />
+    <Content Include="data\raw\usr1\ro\ro-C-01.txt" />
+    <Content Include="data\raw\usr1\ro\ro-C-02.txt" />
+    <Content Include="data\raw\usr1\ro\ro-C-03.txt" />
+    <Content Include="data\raw\usr1\ro\ro-C-04.txt" />
+    <Content Include="data\raw\usr1\sa\sa-C-00.txt" />
+    <Content Include="data\raw\usr1\sa\sa-C-01.txt" />
+    <Content Include="data\raw\usr1\sa\sa-C-02.txt" />
+    <Content Include="data\raw\usr1\sa\sa-C-03.txt" />
+    <Content Include="data\raw\usr1\sa\sa-C-04.txt" />
+    <Content Include="data\raw\usr1\Seven\Seven-N-00.txt" />
+    <Content Include="data\raw\usr1\Seven\Seven-N-01.txt" />
+    <Content Include="data\raw\usr1\Seven\Seven-N-02.txt" />
+    <Content Include="data\raw\usr1\Seven\Seven-N-03.txt" />
+    <Content Include="data\raw\usr1\Seven\Seven-N-04.txt" />
+    <Content Include="data\raw\usr1\Six\Six-N-00.txt" />
+    <Content Include="data\raw\usr1\Six\Six-N-01.txt" />
+    <Content Include="data\raw\usr1\Six\Six-N-02.txt" />
+    <Content Include="data\raw\usr1\Six\Six-N-03.txt" />
+    <Content Include="data\raw\usr1\Six\Six-N-04.txt" />
+    <Content Include="data\raw\usr1\ta\ta-C-00.txt" />
+    <Content Include="data\raw\usr1\ta\ta-C-01.txt" />
+    <Content Include="data\raw\usr1\ta\ta-C-02.txt" />
+    <Content Include="data\raw\usr1\ta\ta-C-03.txt" />
+    <Content Include="data\raw\usr1\ta\ta-C-04.txt" />
+    <Content Include="data\raw\usr1\tha\tha-C-00.txt" />
+    <Content Include="data\raw\usr1\tha\tha-C-01.txt" />
+    <Content Include="data\raw\usr1\tha\tha-C-02.txt" />
+    <Content Include="data\raw\usr1\tha\tha-C-03.txt" />
+    <Content Include="data\raw\usr1\tha\tha-C-04.txt" />
+    <Content Include="data\raw\usr1\tho\tho-C-00.txt" />
+    <Content Include="data\raw\usr1\tho\tho-C-01.txt" />
+    <Content Include="data\raw\usr1\tho\tho-C-02.txt" />
+    <Content Include="data\raw\usr1\tho\tho-C-03.txt" />
+    <Content Include="data\raw\usr1\tho\tho-C-04.txt" />
+    <Content Include="data\raw\usr1\Three\Three-N-00.txt" />
+    <Content Include="data\raw\usr1\Three\Three-N-01.txt" />
+    <Content Include="data\raw\usr1\Three\Three-N-02.txt" />
+    <Content Include="data\raw\usr1\Three\Three-N-03.txt" />
+    <Content Include="data\raw\usr1\Three\Three-N-04.txt" />
+    <Content Include="data\raw\usr1\to\to-C-00.txt" />
+    <Content Include="data\raw\usr1\to\to-C-01.txt" />
+    <Content Include="data\raw\usr1\to\to-C-02.txt" />
+    <Content Include="data\raw\usr1\to\to-C-03.txt" />
+    <Content Include="data\raw\usr1\to\to-C-04.txt" />
+    <Content Include="data\raw\usr1\ttha\ttha-C-00.txt" />
+    <Content Include="data\raw\usr1\ttha\ttha-C-01.txt" />
+    <Content Include="data\raw\usr1\ttha\ttha-C-02.txt" />
+    <Content Include="data\raw\usr1\ttha\ttha-C-03.txt" />
+    <Content Include="data\raw\usr1\ttha\ttha-C-04.txt" />
+    <Content Include="data\raw\usr1\ttho\ttho-C-00.txt" />
+    <Content Include="data\raw\usr1\ttho\ttho-C-01.txt" />
+    <Content Include="data\raw\usr1\ttho\ttho-C-02.txt" />
+    <Content Include="data\raw\usr1\ttho\ttho-C-03.txt" />
+    <Content Include="data\raw\usr1\ttho\ttho-C-04.txt" />
+    <Content Include="data\raw\usr1\Two\Two-N-00.txt" />
+    <Content Include="data\raw\usr1\Two\Two-N-01.txt" />
+    <Content Include="data\raw\usr1\Two\Two-N-02.txt" />
+    <Content Include="data\raw\usr1\Two\Two-N-03.txt" />
+    <Content Include="data\raw\usr1\Two\Two-N-04.txt" />
+    <Content Include="data\raw\usr1\UserInfo.txt" />
+    <Content Include="data\raw\usr1\vo\vo-C-00.txt" />
+    <Content Include="data\raw\usr1\vo\vo-C-01.txt" />
+    <Content Include="data\raw\usr1\vo\vo-C-02.txt" />
+    <Content Include="data\raw\usr1\vo\vo-C-03.txt" />
+    <Content Include="data\raw\usr1\vo\vo-C-04.txt" />
+    <Content Include="data\raw\usr1\yo\yo-C-00.txt" />
+    <Content Include="data\raw\usr1\yo\yo-C-01.txt" />
+    <Content Include="data\raw\usr1\yo\yo-C-02.txt" />
+    <Content Include="data\raw\usr1\yo\yo-C-03.txt" />
+    <Content Include="data\raw\usr1\yo\yo-C-04.txt" />
+    <Content Include="data\raw\usr1\Zero\Zero-N-00.txt" />
+    <Content Include="data\raw\usr1\Zero\Zero-N-01.txt" />
+    <Content Include="data\raw\usr1\Zero\Zero-N-02.txt" />
+    <Content Include="data\raw\usr1\Zero\Zero-N-03.txt" />
+    <Content Include="data\raw\usr1\Zero\Zero-N-04.txt" />
+    <Content Include="data\raw\usr2\a\a-C-00.txt" />
+    <Content Include="data\raw\usr2\a\a-C-01.txt" />
+    <Content Include="data\raw\usr2\a\a-C-02.txt" />
+    <Content Include="data\raw\usr2\a\a-C-03.txt" />
+    <Content Include="data\raw\usr2\a\a-C-04.txt" />
+    <Content Include="data\raw\usr2\ba\ba-C-00.txt" />
+    <Content Include="data\raw\usr2\ba\ba-C-01.txt" />
+    <Content Include="data\raw\usr2\ba\ba-C-02.txt" />
+    <Content Include="data\raw\usr2\ba\ba-C-03.txt" />
+    <Content Include="data\raw\usr2\ba\ba-C-04.txt" />
+    <Content Include="data\raw\usr2\ca\ca-C-00.txt" />
+    <Content Include="data\raw\usr2\ca\ca-C-01.txt" />
+    <Content Include="data\raw\usr2\ca\ca-C-02.txt" />
+    <Content Include="data\raw\usr2\ca\ca-C-03.txt" />
+    <Content Include="data\raw\usr2\ca\ca-C-04.txt" />
+    <Content Include="data\raw\usr2\cha\cha-C-00.txt" />
+    <Content Include="data\raw\usr2\cha\cha-C-01.txt" />
+    <Content Include="data\raw\usr2\cha\cha-C-02.txt" />
+    <Content Include="data\raw\usr2\cha\cha-C-03.txt" />
+    <Content Include="data\raw\usr2\cha\cha-C-04.txt" />
+    <Content Include="data\raw\usr2\cho\cho-C-00.txt" />
+    <Content Include="data\raw\usr2\cho\cho-C-01.txt" />
+    <Content Include="data\raw\usr2\cho\cho-C-02.txt" />
+    <Content Include="data\raw\usr2\cho\cho-C-03.txt" />
+    <Content Include="data\raw\usr2\cho\cho-C-04.txt" />
+    <Content Include="data\raw\usr2\co\co-C-00.txt" />
+    <Content Include="data\raw\usr2\co\co-C-01.txt" />
+    <Content Include="data\raw\usr2\co\co-C-02.txt" />
+    <Content Include="data\raw\usr2\co\co-C-03.txt" />
+    <Content Include="data\raw\usr2\co\co-C-04.txt" />
+    <Content Include="data\raw\usr2\da\da-C-00.txt" />
+    <Content Include="data\raw\usr2\da\da-C-01.txt" />
+    <Content Include="data\raw\usr2\da\da-C-02.txt" />
+    <Content Include="data\raw\usr2\da\da-C-03.txt" />
+    <Content Include="data\raw\usr2\da\da-C-04.txt" />
+    <Content Include="data\raw\usr2\do\do-C-00.txt" />
+    <Content Include="data\raw\usr2\do\do-C-01.txt" />
+    <Content Include="data\raw\usr2\do\do-C-02.txt" />
+    <Content Include="data\raw\usr2\do\do-C-03.txt" />
+    <Content Include="data\raw\usr2\do\do-C-04.txt" />
+    <Content Include="data\raw\usr2\Eight\Eight-N-00.txt" />
+    <Content Include="data\raw\usr2\Eight\Eight-N-01.txt" />
+    <Content Include="data\raw\usr2\Eight\Eight-N-02.txt" />
+    <Content Include="data\raw\usr2\Eight\Eight-N-03.txt" />
+    <Content Include="data\raw\usr2\Eight\Eight-N-04.txt" />
+    <Content Include="data\raw\usr2\Five\Five-N-00.txt" />
+    <Content Include="data\raw\usr2\Five\Five-N-01.txt" />
+    <Content Include="data\raw\usr2\Five\Five-N-02.txt" />
+    <Content Include="data\raw\usr2\Five\Five-N-03.txt" />
+    <Content Include="data\raw\usr2\Five\Five-N-04.txt" />
+    <Content Include="data\raw\usr2\Four\Four-N-00.txt" />
+    <Content Include="data\raw\usr2\Four\Four-N-01.txt" />
+    <Content Include="data\raw\usr2\Four\Four-N-02.txt" />
+    <Content Include="data\raw\usr2\Four\Four-N-03.txt" />
+    <Content Include="data\raw\usr2\Four\Four-N-04.txt" />
+    <Content Include="data\raw\usr2\ha\ha-C-00.txt" />
+    <Content Include="data\raw\usr2\ha\ha-C-01.txt" />
+    <Content Include="data\raw\usr2\ha\ha-C-02.txt" />
+    <Content Include="data\raw\usr2\ha\ha-C-03.txt" />
+    <Content Include="data\raw\usr2\ha\ha-C-04.txt" />
+    <Content Include="data\raw\usr2\ka\ka-C-00.txt" />
+    <Content Include="data\raw\usr2\ka\ka-C-01.txt" />
+    <Content Include="data\raw\usr2\ka\ka-C-02.txt" />
+    <Content Include="data\raw\usr2\ka\ka-C-03.txt" />
+    <Content Include="data\raw\usr2\ka\ka-C-04.txt" />
+    <Content Include="data\raw\usr2\kha\kha-C-00.txt" />
+    <Content Include="data\raw\usr2\kha\kha-C-01.txt" />
+    <Content Include="data\raw\usr2\kha\kha-C-02.txt" />
+    <Content Include="data\raw\usr2\kha\kha-C-03.txt" />
+    <Content Include="data\raw\usr2\kha\kha-C-04.txt" />
+    <Content Include="data\raw\usr2\kho\kho-C-00.txt" />
+    <Content Include="data\raw\usr2\kho\kho-C-01.txt" />
+    <Content Include="data\raw\usr2\kho\kho-C-02.txt" />
+    <Content Include="data\raw\usr2\kho\kho-C-03.txt" />
+    <Content Include="data\raw\usr2\kho\kho-C-04.txt" />
+    <Content Include="data\raw\usr2\ko\ko-C-00.txt" />
+    <Content Include="data\raw\usr2\ko\ko-C-01.txt" />
+    <Content Include="data\raw\usr2\ko\ko-C-02.txt" />
+    <Content Include="data\raw\usr2\ko\ko-C-03.txt" />
+    <Content Include="data\raw\usr2\ko\ko-C-04.txt" />
+    <Content Include="data\raw\usr2\la\la-C-00.txt" />
+    <Content Include="data\raw\usr2\la\la-C-01.txt" />
+    <Content Include="data\raw\usr2\la\la-C-02.txt" />
+    <Content Include="data\raw\usr2\la\la-C-03.txt" />
+    <Content Include="data\raw\usr2\la\la-C-04.txt" />
+    <Content Include="data\raw\usr2\lo\lo-C-00.txt" />
+    <Content Include="data\raw\usr2\lo\lo-C-01.txt" />
+    <Content Include="data\raw\usr2\lo\lo-C-02.txt" />
+    <Content Include="data\raw\usr2\lo\lo-C-03.txt" />
+    <Content Include="data\raw\usr2\lo\lo-C-04.txt" />
+    <Content Include="data\raw\usr2\mo\mo-C-00.txt" />
+    <Content Include="data\raw\usr2\mo\mo-C-01.txt" />
+    <Content Include="data\raw\usr2\mo\mo-C-02.txt" />
+    <Content Include="data\raw\usr2\mo\mo-C-03.txt" />
+    <Content Include="data\raw\usr2\mo\mo-C-04.txt" />
+    <Content Include="data\raw\usr2\ngo\ngo-C-00.txt" />
+    <Content Include="data\raw\usr2\ngo\ngo-C-01.txt" />
+    <Content Include="data\raw\usr2\ngo\ngo-C-02.txt" />
+    <Content Include="data\raw\usr2\ngo\ngo-C-03.txt" />
+    <Content Include="data\raw\usr2\ngo\ngo-C-04.txt" />
+    <Content Include="data\raw\usr2\Nine\Nine-N-00.txt" />
+    <Content Include="data\raw\usr2\Nine\Nine-N-01.txt" />
+    <Content Include="data\raw\usr2\Nine\Nine-N-02.txt" />
+    <Content Include="data\raw\usr2\Nine\Nine-N-03.txt" />
+    <Content Include="data\raw\usr2\Nine\Nine-N-04.txt" />
+    <Content Include="data\raw\usr2\nno\nno-C-00.txt" />
+    <Content Include="data\raw\usr2\nno\nno-C-01.txt" />
+    <Content Include="data\raw\usr2\nno\nno-C-02.txt" />
+    <Content Include="data\raw\usr2\nno\nno-C-03.txt" />
+    <Content Include="data\raw\usr2\nno\nno-C-04.txt" />
+    <Content Include="data\raw\usr2\no\no-C-00.txt" />
+    <Content Include="data\raw\usr2\no\no-C-01.txt" />
+    <Content Include="data\raw\usr2\no\no-C-02.txt" />
+    <Content Include="data\raw\usr2\no\no-C-03.txt" />
+    <Content Include="data\raw\usr2\no\no-C-04.txt" />
+    <Content Include="data\raw\usr2\nyo\nyo-C-00.txt" />
+    <Content Include="data\raw\usr2\nyo\nyo-C-01.txt" />
+    <Content Include="data\raw\usr2\nyo\nyo-C-02.txt" />
+    <Content Include="data\raw\usr2\nyo\nyo-C-03.txt" />
+    <Content Include="data\raw\usr2\nyo\nyo-C-04.txt" />
+    <Content Include="data\raw\usr2\One\One-N-00.txt" />
+    <Content Include="data\raw\usr2\One\One-N-01.txt" />
+    <Content Include="data\raw\usr2\One\One-N-02.txt" />
+    <Content Include="data\raw\usr2\One\One-N-03.txt" />
+    <Content Include="data\raw\usr2\One\One-N-04.txt" />
+    <Content Include="data\raw\usr2\pha\pha-C-00.txt" />
+    <Content Include="data\raw\usr2\pha\pha-C-01.txt" />
+    <Content Include="data\raw\usr2\pha\pha-C-02.txt" />
+    <Content Include="data\raw\usr2\pha\pha-C-03.txt" />
+    <Content Include="data\raw\usr2\pha\pha-C-04.txt" />
+    <Content Include="data\raw\usr2\pho\pho-C-00.txt" />
+    <Content Include="data\raw\usr2\pho\pho-C-01.txt" />
+    <Content Include="data\raw\usr2\pho\pho-C-02.txt" />
+    <Content Include="data\raw\usr2\pho\pho-C-03.txt" />
+    <Content Include="data\raw\usr2\pho\pho-C-04.txt" />
+    <Content Include="data\raw\usr2\po\po-C-00.txt" />
+    <Content Include="data\raw\usr2\po\po-C-01.txt" />
+    <Content Include="data\raw\usr2\po\po-C-02.txt" />
+    <Content Include="data\raw\usr2\po\po-C-03.txt" />
+    <Content Include="data\raw\usr2\po\po-C-04.txt" />
+    <Content Include="data\raw\usr2\ro\ro-C-00.txt" />
+    <Content Include="data\raw\usr2\ro\ro-C-01.txt" />
+    <Content Include="data\raw\usr2\ro\ro-C-02.txt" />
+    <Content Include="data\raw\usr2\ro\ro-C-03.txt" />
+    <Content Include="data\raw\usr2\ro\ro-C-04.txt" />
+    <Content Include="data\raw\usr2\sa\sa-C-00.txt" />
+    <Content Include="data\raw\usr2\sa\sa-C-01.txt" />
+    <Content Include="data\raw\usr2\sa\sa-C-02.txt" />
+    <Content Include="data\raw\usr2\sa\sa-C-03.txt" />
+    <Content Include="data\raw\usr2\sa\sa-C-04.txt" />
+    <Content Include="data\raw\usr2\Seven\Seven-N-00.txt" />
+    <Content Include="data\raw\usr2\Seven\Seven-N-01.txt" />
+    <Content Include="data\raw\usr2\Seven\Seven-N-02.txt" />
+    <Content Include="data\raw\usr2\Seven\Seven-N-03.txt" />
+    <Content Include="data\raw\usr2\Seven\Seven-N-04.txt" />
+    <Content Include="data\raw\usr2\Six\Six-N-00.txt" />
+    <Content Include="data\raw\usr2\Six\Six-N-01.txt" />
+    <Content Include="data\raw\usr2\Six\Six-N-02.txt" />
+    <Content Include="data\raw\usr2\Six\Six-N-03.txt" />
+    <Content Include="data\raw\usr2\Six\Six-N-04.txt" />
+    <Content Include="data\raw\usr2\ta\ta-C-00.txt" />
+    <Content Include="data\raw\usr2\ta\ta-C-01.txt" />
+    <Content Include="data\raw\usr2\ta\ta-C-02.txt" />
+    <Content Include="data\raw\usr2\ta\ta-C-03.txt" />
+    <Content Include="data\raw\usr2\ta\ta-C-04.txt" />
+    <Content Include="data\raw\usr2\tha\tha-C-00.txt" />
+    <Content Include="data\raw\usr2\tha\tha-C-01.txt" />
+    <Content Include="data\raw\usr2\tha\tha-C-02.txt" />
+    <Content Include="data\raw\usr2\tha\tha-C-03.txt" />
+    <Content Include="data\raw\usr2\tha\tha-C-04.txt" />
+    <Content Include="data\raw\usr2\tho\tho-C-00.txt" />
+    <Content Include="data\raw\usr2\tho\tho-C-01.txt" />
+    <Content Include="data\raw\usr2\tho\tho-C-02.txt" />
+    <Content Include="data\raw\usr2\tho\tho-C-03.txt" />
+    <Content Include="data\raw\usr2\tho\tho-C-04.txt" />
+    <Content Include="data\raw\usr2\Three\Three-N-00.txt" />
+    <Content Include="data\raw\usr2\Three\Three-N-01.txt" />
+    <Content Include="data\raw\usr2\Three\Three-N-02.txt" />
+    <Content Include="data\raw\usr2\Three\Three-N-03.txt" />
+    <Content Include="data\raw\usr2\Three\Three-N-04.txt" />
+    <Content Include="data\raw\usr2\to\to-C-00.txt" />
+    <Content Include="data\raw\usr2\to\to-C-01.txt" />
+    <Content Include="data\raw\usr2\to\to-C-02.txt" />
+    <Content Include="data\raw\usr2\to\to-C-03.txt" />
+    <Content Include="data\raw\usr2\to\to-C-04.txt" />
+    <Content Include="data\raw\usr2\ttha\ttha-C-00.txt" />
+    <Content Include="data\raw\usr2\ttha\ttha-C-01.txt" />
+    <Content Include="data\raw\usr2\ttha\ttha-C-02.txt" />
+    <Content Include="data\raw\usr2\ttha\ttha-C-03.txt" />
+    <Content Include="data\raw\usr2\ttha\ttha-C-04.txt" />
+    <Content Include="data\raw\usr2\ttho\ttho-C-00.txt" />
+    <Content Include="data\raw\usr2\ttho\ttho-C-01.txt" />
+    <Content Include="data\raw\usr2\ttho\ttho-C-02.txt" />
+    <Content Include="data\raw\usr2\ttho\ttho-C-03.txt" />
+    <Content Include="data\raw\usr2\ttho\ttho-C-04.txt" />
+    <Content Include="data\raw\usr2\Two\Two-N-00.txt" />
+    <Content Include="data\raw\usr2\Two\Two-N-01.txt" />
+    <Content Include="data\raw\usr2\Two\Two-N-02.txt" />
+    <Content Include="data\raw\usr2\Two\Two-N-03.txt" />
+    <Content Include="data\raw\usr2\Two\Two-N-04.txt" />
+    <Content Include="data\raw\usr2\UserInfo.txt" />
+    <Content Include="data\raw\usr2\vo\vo-C-00.txt" />
+    <Content Include="data\raw\usr2\vo\vo-C-01.txt" />
+    <Content Include="data\raw\usr2\vo\vo-C-02.txt" />
+    <Content Include="data\raw\usr2\vo\vo-C-03.txt" />
+    <Content Include="data\raw\usr2\vo\vo-C-04.txt" />
+    <Content Include="data\raw\usr2\yo\yo-C-00.txt" />
+    <Content Include="data\raw\usr2\yo\yo-C-01.txt" />
+    <Content Include="data\raw\usr2\yo\yo-C-02.txt" />
+    <Content Include="data\raw\usr2\yo\yo-C-03.txt" />
+    <Content Include="data\raw\usr2\yo\yo-C-04.txt" />
+    <Content Include="data\raw\usr2\Zero\Zero-N-00.txt" />
+    <Content Include="data\raw\usr2\Zero\Zero-N-01.txt" />
+    <Content Include="data\raw\usr2\Zero\Zero-N-02.txt" />
+    <Content Include="data\raw\usr2\Zero\Zero-N-03.txt" />
+    <Content Include="data\raw\usr2\Zero\Zero-N-04.txt" />
+    <Content Include="data\testlist.txt" />
+    <Content Include="data\trainlist.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
